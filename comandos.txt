@@ -1,2 +1,2 @@
-npm i -g expo-cli - instalar terminal cli
+npm i -g expo-cli -> instalar terminal cli
 npx create-expo-app@latest nome-projeto --template blank
