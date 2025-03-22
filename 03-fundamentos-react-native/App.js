@@ -4,6 +4,7 @@ import FirstComponent from './components/FirstComponent';
 import SecondComponent from './components/SecondComponent';
 import ThirdComponent from './components/ThirdComponent';
 import JavaScriptComponent from './components/JavaScriptComponent';
+import Perfil from './components/Perfil';
 
 export default function App() {
   return (
@@ -13,6 +14,10 @@ export default function App() {
       <SecondComponent></SecondComponent>
       <ThirdComponent></ThirdComponent>
       <JavaScriptComponent></JavaScriptComponent>
+      <Perfil
+        nome="Kauan"
+        idade="20"
+        email="kauan@gmail.com"></Perfil>
     </View>
   );
 }
