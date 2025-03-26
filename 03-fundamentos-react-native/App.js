@@ -1,23 +1,33 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import FirstComponent from './components/FirstComponent';
-import SecondComponent from './components/SecondComponent';
-import ThirdComponent from './components/ThirdComponent';
-import JavaScriptComponent from './components/JavaScriptComponent';
-import Perfil from './components/Perfil';
+import Pessoa from './components/Pessoa';
 
 export default function App() {
+  const listaJogadores = [
+    {
+      nome: "Neymar",
+      idade: 33,
+      imagem: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSW_Z5il2X7HH0ZGTJUJeHb0g3f05119j7kMQ&s'
+    },
+    {
+      nome: "Cristiano Ronaldo",
+      idade: 42,
+      imagem: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSW_Z5il2X7HH0ZGTJUJeHb0g3f05119j7kMQ&s'
+    },
+    {
+      nome: "Lionel Messi",
+      idade: 40,
+      imagem: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSW_Z5il2X7HH0ZGTJUJeHb0g3f05119j7kMQ&s'
+    }
+  ]
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <FirstComponent text="Olá" titulo="Dev Kauan"></FirstComponent>
-      <SecondComponent></SecondComponent>
-      <ThirdComponent></ThirdComponent>
-      <JavaScriptComponent></JavaScriptComponent>
-      <Perfil
-        nome="Kauan"
-        idade="20"
-        email="kauan@gmail.com"></Perfil>
+      {listaJogadores.map((jogador) => {
+        return (
+          <Pessoa dados={jogador}></Pessoa>
+        )
+      })}
     </View>
   );
 }
