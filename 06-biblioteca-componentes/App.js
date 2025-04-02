@@ -1,9 +1,30 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
+import { FlatList, ScrollView, StyleSheet, View } from 'react-native';
 import { PaperProvider, Card, Title, Paragraph, Text, Divider, Button } from 'react-native-paper';
 
 export default function App() {
-  const lista = ["Uva", "Maçã", "Banana", "Laranja"]
+  const lista = [
+    {
+      titulo: 'Card1',
+      descricao: 'loremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremlorem',
+      imagem: 'https://i.pinimg.com/474x/9a/a7/c9/9aa7c9656614abf9bbbcc8425c878dca.jpg'
+    },
+    {
+      titulo: 'Card2',
+      descricao: 'loremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremlorem',
+      imagem: 'https://i.pinimg.com/474x/9a/a7/c9/9aa7c9656614abf9bbbcc8425c878dca.jpg'
+    },
+    {
+      titulo: 'Card3',
+      descricao: 'loremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremlorem',
+      imagem: 'https://i.pinimg.com/474x/9a/a7/c9/9aa7c9656614abf9bbbcc8425c878dca.jpg'
+    },
+    {
+      titulo: 'Card4',
+      descricao: 'loremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremlorem',
+      imagem: 'https://i.pinimg.com/474x/9a/a7/c9/9aa7c9656614abf9bbbcc8425c878dca.jpg'
+    }
+  ]
   return (
     <PaperProvider>
       <View style={styles.container}>
@@ -22,9 +43,33 @@ export default function App() {
             <Title>Titulo</Title>
             <Paragraph>Paragraph Paragraph Paragraph Paragraph Paragraph Paragraph Paragraph Paragraph Paragraph Paragraph Paragraph Paragraph Paragraph Paragraph Paragraph Paragraph Paragraph Paragraph </Paragraph>
           </Card.Content>
-          <Card.Cover source={{uri: 'https://i.pinimg.com/474x/9a/a7/c9/9aa7c9656614abf9bbbcc8425c878dca.jpg'}}/>
+          <Card.Cover source={{ uri: 'https://i.pinimg.com/474x/9a/a7/c9/9aa7c9656614abf9bbbcc8425c878dca.jpg' }} />
         </Card>
+        <FlatList
+          data={lista}
+          renderItem={({ item }) => (
+            <Card>
+              <Card.Content>
+                <Title>{item.titulo}</Title>
+                <Paragraph>{item.descricao}</Paragraph>
+                <Card.Cover source={{uri: item.imagem}}/>
+              </Card.Content>
+            </Card>
+          )} />
+        <FlatList
+          horizontal
+          data={lista}
+          renderItem={({ item }) => (
+            <Card>
+              <Card.Content>
+                <Title>{item.titulo}</Title>
+                <Paragraph>{item.descricao}</Paragraph>
+                <Card.Cover source={{uri: item.imagem}}/>
+              </Card.Content>
+            </Card>
+          )} />
       </View>
+
     </PaperProvider>
   );
 }
