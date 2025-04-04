@@ -1,2 +1,4 @@
 npm i -g expo-cli -> instalar terminal cli
 npx create-expo-app@latest nome-projeto --template blank
+npm install react-native-paper
+npm install react-native-vector-icons react-native-safe-area-context
