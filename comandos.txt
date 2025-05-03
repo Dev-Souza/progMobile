@@ -11,3 +11,6 @@ npx expo install react-native-screens react-native-safe-area-context
 
 Tipos de navegação
 npm install @react-navigation/bottom-tabs
+
+para acessar o localhost
+ex: exp://10.30.102.12:8081
