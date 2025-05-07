@@ -1,0 +1,28 @@
+import { StyleSheet, Text, View } from 'react-native'
+import React from 'react'
+import { Button, Card, Title } from 'react-native-paper'
+
+export default function ItemScreen({navigation, route}) {
+  const carro = route.params
+  return (
+    <View>
+      <Card>
+        <Card.Content>
+          <Text>Nome: {carro.nome}</Text>
+          <Text>Fabricante: {carro.fabricante}</Text>
+          <Text>Cor: {carro.cor}</Text>
+          <Text>Ano: {carro.ano}</Text>
+        </Card.Content>
+        <Card.Actions>
+          <Button 
+            mode='contained-tonal'
+            icon='arrow-left'
+            onPress={() => navigation.goBack()}
+          >Voltar</Button>
+        </Card.Actions>
+      </Card>
+    </View>
+  )
+}
+
+const styles = StyleSheet.create({})
