@@ -1,17 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import NomeNumero from './components/NomeNumero';
 import Controle from './components/Controle';
 import NumeroAleatorio from './components/NumeroAleatorio';
+import Pessoa from './components/Pessoa';
+import GeradorNumeroAleatorio from './components/GeradorNumeroAleatorio';
+import { PaperProvider } from 'react-native-paper';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
-      <NumeroAleatorio />
-      <NomeNumero />
-      <Controle />
-    </View>
+    <PaperProvider>
+      <ScrollView>
+        <StatusBar style="auto" />
+        <Pessoa />
+        <GeradorNumeroAleatorio />
+      </ScrollView>
+    </PaperProvider>
   );
 }
 
