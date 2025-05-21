@@ -2,15 +2,14 @@ npm i -g expo-cli -> instalar terminal cli
 npx create-expo-app@latest nome-projeto --template blank
 
 Libs de componentes de estilização
-npm install react-native-paper
-npm install react-native-vector-icons react-native-safe-area-context
+npm install react-native-paper react-native-vector-icons react-native-safe-area-context
 
 Libs de navegação
 npm install @react-navigation/native
 npx expo install react-native-screens react-native-safe-area-context
 
 Tipos de navegação
-npm install @react-navigation/bottom-tabs
+npm install @react-navigation/bottom-tabs @react-navigation/stack
 
 para acessar o localhost
 ex: exp://10.30.102.12:8081
