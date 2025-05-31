@@ -1,16 +1,20 @@
 import { StyleSheet, View } from 'react-native'
 import React, { useState } from 'react'
 import { Button, Text, TextInput } from 'react-native-paper'
-import {TextInputMask} from 'react-native-masked-text'
+import { TextInputMask } from 'react-native-masked-text'
+import AlunoService from '../services/AlunoService';
 
-export default function AlunosFormsScreen() {
-  const [nome, setNome] = useState('');
-  const [cpf, setCpf] = useState('');
-  const [email, setEmail] = useState('');
-  const [telefone, setTelefone] = useState('');
-  const [dataNascimento, setDataNascimento] = useState('');
+export default function AlunosFormsScreen({ navigation, route }) {
 
-  const salvar = () => {
+  const alunoAntigo = route.params || {}
+
+  const [nome, setNome] = useState(alunoAntigo.nome || '');
+  const [cpf, setCpf] = useState(alunoAntigo.cpf || '');
+  const [email, setEmail] = useState(alunoAntigo.email || '');
+  const [telefone, setTelefone] = useState(alunoAntigo.telefone || '');
+  const [dataNascimento, setDataNascimento] = useState(alunoAntigo.dataNascimento || '');
+
+  const salvar = async () => {
     let aluno = {
       nome,
       cpf,
@@ -19,15 +23,31 @@ export default function AlunosFormsScreen() {
       dataNascimento
     }
 
-    if(!aluno.nome || !aluno.cpf || !aluno.email || !aluno.telefone || !aluno.dataNascimento){
-      alert("Preencha todos os campos!");
+    if (!aluno.nome || !aluno.cpf || !aluno.email || !aluno.telefone || !aluno.dataNascimento) return alert("Preencha todos os campos!");
+    
+    if (alunoAntigo.id) {
+      aluno.id = alunoAntigo.id
+      await AlunoService.atualizar(aluno)
+      alert("Aluno atualizado com sucesso!");
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'AlunosListaScreen' }]
+      })
+    } else {
+      await AlunoService.salvar(aluno)
+      alert("Aluno cadastrado com sucesso!");
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'AlunosListaScreen' }]
+      })
     }
-    alert(JSON.stringify(aluno))
+
   }
 
   return (
     <View style={styles.container}>
       <Text variant='titleLarge'>Informe os dados:</Text>
+      <Text>ID: {alunoAntigo.id || 'NOVO'}</Text>
       <TextInput
         style={styles.input}
         mode='outlined'
@@ -69,7 +89,7 @@ export default function AlunosFormsScreen() {
         onChangeText={text => setTelefone(text)}
         keyboardType='numeric'
         render={(props) => (
-          <TextInputMask 
+          <TextInputMask
             {...props}
             type={'cel-phone'}
             options={{
